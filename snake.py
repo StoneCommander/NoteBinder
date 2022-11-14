@@ -10,7 +10,6 @@ import aubio
 import numpy as num
 import pyaudio
 import sys
-
 import pyautogui
 import time
 
@@ -34,34 +33,12 @@ notebind = {
     "Bb3": "S",
     "F3": "A",
     "Bb2": "D"
-    # "E4": "*MU"
 }
+
 
 def freq_to_number(f): return 69 + 12*num.log2(f/440.0)
 def number_to_freq(n): return 440 * 2.0**((n-69)/12.0)
 def note_name(n): return NOTE_NAMES[n % 12] + str(int(num.floor(n/12 - 1)))
-
-
-def key(inp):
-    if inp[0] == "*":
-        if inp[1] == "M":
-            if inp[2] =="U":
-                pyautogui.move(0, -30) 
-            elif inp[2] =="D":
-                pyautogui.move(0, 30) 
-            elif inp[2] =="L":
-                pyautogui.move(-30, 0) 
-            elif inp[2] =="R":
-                pyautogui.move(30, 0) 
-        elif inp[1] == "C":
-            if inp[2] == "L":
-                pyautogui.click()
-            elif inp[2] == "R":
-                pyautogui.click(button="right")
-            elif inp[2] == "M":
-                pyautogui.click(button="middle")   
-        pyautogui.press(inp)
-
 
 def main(args):
 
@@ -116,7 +93,7 @@ def main(args):
         if name in notebind.keys():
             if last == name and count == 1:
                 count += 1
-                key(notebind[name])
+                pyautogui.press(notebind[name])
             elif last == name:
                 count += 1
             else:
