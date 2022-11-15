@@ -43,6 +43,7 @@ notebind = {
     "D3": "*DM",  #4th position. med low
     "A3": "*SU",  #2nd Position. med high 
     "E3": "*SD",  #2nd Position. med low
+    "Bb5": "O,t"
 }
 
 def freq_to_number(f): return 69 + 12*num.log2(f/440.0)
